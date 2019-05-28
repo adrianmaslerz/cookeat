@@ -1,5 +1,7 @@
 {
   "name": "cookeat",
-  "integrations": {},
+  "integrations": {
+    "capacitor": {}
+  },
   "type": "angular"
 }

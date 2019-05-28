@@ -1,0 +1,7 @@
+{
+  "appId": "com.cookeat.app",
+  "appName": "CookEat",
+  "bundledWebRuntime": false,
+  "npmClient": "npm",
+  "webDir": "www"
+}
