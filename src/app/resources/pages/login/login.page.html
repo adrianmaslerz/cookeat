@@ -1,0 +1,19 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-title>Login</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+    <form [formGroup]="form">
+        <ion-item>
+            <ion-input placeholder="Email" type="email" autocomplete autocorrect formControlName="email"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-input placeholder="Password" type="password" formControlName="password"></ion-input>
+        </ion-item>
+
+        <ion-button color="primary" expand="full" (click)="onSubmit()">Login</ion-button>
+        <ion-item routerLink="/register">To register</ion-item>
+    </form>
+</ion-content>
