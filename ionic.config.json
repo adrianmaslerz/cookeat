@@ -1,7 +1,7 @@
 {
   "name": "cookeat",
   "integrations": {
-    "capacitor": {}
+    "cordova": {}
   },
   "type": "angular"
 }
