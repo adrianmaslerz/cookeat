@@ -5,17 +5,22 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { IonicModule } from '@ionic/angular';
 
-import { LoggedPage } from './logged.page';
-import { LoggedRouterModule } from './logged.router.module';
+import { RemindersPage } from './reminders.page';
 
+const routes: Routes = [
+  {
+    path: '',
+    component: RemindersPage
+  }
+];
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    LoggedRouterModule
+    RouterModule.forChild(routes)
   ],
-  declarations: [LoggedPage]
+  declarations: [RemindersPage]
 })
-export class LoggedPageModule {}
+export class RemindersPageModule {}
