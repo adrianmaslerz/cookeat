@@ -45,6 +45,24 @@ const routes: Routes = [
                 ]
             },
             {
+                path: 'profile',
+                children: [
+                    {
+                        path: '',
+                        loadChildren: './profile/profile.module#ProfilePageModule'
+                    }
+                ]
+            },
+            {
+                path: 'change-password',
+                children: [
+                    {
+                        path: '',
+                        loadChildren: './change-password/change-password.module#ChangePasswordPageModule'
+                    }
+                ]
+            },
+            {
                 path: '',
                 redirectTo: '/logged/home',
                 pathMatch: 'full'
