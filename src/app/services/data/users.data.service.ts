@@ -19,4 +19,9 @@ export class UsersDataService
             last_name: data["last_name"]
         });
     }
+
+    getUser(id: string)
+    {
+        return this.fireDatabase.object(`/users/${id}`);
+    }
 }
