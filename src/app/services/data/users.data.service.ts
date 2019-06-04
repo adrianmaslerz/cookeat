@@ -24,4 +24,14 @@ export class UsersDataService
     {
         return this.fireDatabase.object(`/users/${id}`);
     }
+
+    updateUser(id: string, data: Object)
+    {
+        const ref = this.fireDatabase.object(`/users/${id}`);
+        return ref.set({
+            email: data["email"],
+            first_name: data["first_name"],
+            last_name: data["last_name"]
+        });
+    }
 }
