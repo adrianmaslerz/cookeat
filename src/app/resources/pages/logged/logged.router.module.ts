@@ -63,6 +63,16 @@ const routes: Routes = [
                 ]
             },
             {
+                path: 'recipes/:id',
+                children: [
+                    {
+                        path: '',
+                        loadChildren: './recipe-detail/recipe-detail.module#RecipeDetailPageModule'
+                    }
+                ]
+            },
+
+            {
                 path: '',
                 redirectTo: '/logged/home',
                 pathMatch: 'full'

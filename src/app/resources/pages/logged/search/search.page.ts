@@ -24,7 +24,7 @@ export class SearchPage implements OnInit
             .subscribe(snapshot => {
 
             this.inProgress = false;
-            this.results = snapshot.map(recipe => recipe.payload.val());
+            this.results = snapshot.map(recipe => { return { ...recipe.payload.val(), key: recipe.key } } );
         });
     }
 

@@ -20,4 +20,9 @@ export class RecipesDataService
             })
             .snapshotChanges();
     }
+
+    getRecipeDetails(key: string) : Observable<any>
+    {
+        return this.fireDatabase.object(`recipes/${key}`).snapshotChanges();
+    }
 }
