@@ -25,7 +25,7 @@
         <ion-spinner *ngIf="inProgress"></ion-spinner>
     </div>
     <ion-list>
-        <ion-item *ngFor="let recipe of results" [routerLink]="['/logged','recipes', recipe.id ]">
+        <ion-item *ngFor="let recipe of results" [routerLink]="['/logged','recipes', recipe.key ]">
             <ion-thumbnail slot="start">
                 <img [src]="recipe.image">
             </ion-thumbnail>

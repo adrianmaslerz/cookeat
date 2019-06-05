@@ -1,0 +1,31 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-title>Recipe-detail</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-card *ngIf="recipe">
+        <ion-card-header>
+            <ion-img [src]="recipe.image"></ion-img>
+            <br>
+            <ion-grid>
+                <ion-row>
+                    <ion-col>
+                        <ion-card-title>{{ recipe.title }}</ion-card-title>
+                    </ion-col>
+                    <ion-col size="3">
+                        <ion-item lines="none" tappable>
+                            <ion-icon name="heart-empty"></ion-icon>
+                        </ion-item>
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
+
+        </ion-card-header>
+
+        <ion-card-content>
+            <div [innerHTML]="recipe.description" class="description"></div>
+        </ion-card-content>
+    </ion-card>
+</ion-content>
