@@ -1,6 +1,7 @@
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { equalToFieldValue } from './validators';
 
 export function handleUniqueValidator(method: Function)
 {
@@ -51,5 +52,11 @@ export function getMessageError(error: HttpErrorResponse): string
     return message;
 }
 
+export function validateControls(form: FormGroup)
+{
+    Object.keys(form.controls).forEach(controlName => {
+        form.get(controlName).updateValueAndValidity();
+    })
+}
 
 
