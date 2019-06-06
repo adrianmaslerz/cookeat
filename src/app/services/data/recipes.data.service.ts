@@ -10,13 +10,11 @@ export class RecipesDataService
 {
     constructor(private fireDatabase: AngularFireDatabase) { }
 
-    getRecipes(search: string) : Observable<any>
+    getRecipes(search?: string) : Observable<any>
     {
         return this.fireDatabase
             .list<Recipe>("recipes", ref => {
-                return ref.orderByChild("title")
-                    .startAt(search)
-                    .limitToFirst(30);
+                return search ? ref.orderByChild("title").startAt(search).limitToFirst(30) : ref;
             })
             .snapshotChanges();
     }
