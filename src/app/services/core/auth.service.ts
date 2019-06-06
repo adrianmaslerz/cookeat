@@ -10,6 +10,7 @@ import { User } from '../../models/user.model';
 export class AuthService
 {
     public user : Subject<User> = new Subject();
+    public logged: User;
     constructor(private fireAuth: AngularFireAuth, private usersDataService: UsersDataService) {}
 
     register(data: Object) : Promise<any>
@@ -29,6 +30,9 @@ export class AuthService
 
     loadLoggedUser(id: string)
     {
-        this.usersDataService.getUser(id).valueChanges().subscribe((user: User) => this.user.next(user));
+        this.usersDataService.getUser(id).valueChanges().subscribe((user: User) => {
+            this.logged = user;
+            this.user.next(user)
+        });
     }
 }

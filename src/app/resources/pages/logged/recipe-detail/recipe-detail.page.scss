@@ -1,4 +1,12 @@
-.favourite-button
+.header-line
 {
-  text-align: right;
+  ion-card-title, ion-item
+  {
+    display: inline-block;
+  }
+  ion-item
+  {
+    float: right;
+    margin-top: -10px;
+  }
 }

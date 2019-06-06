@@ -1,6 +1,6 @@
 export class Favourite
 {
-    id: string;
+    key: string;
     recipe_id: string;
     user_id: string;
 }
