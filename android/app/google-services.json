@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "503468010163",
+    "firebase_url": "https://cookeat-e828a.firebaseio.com",
+    "project_id": "cookeat-e828a",
+    "storage_bucket": "cookeat-e828a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:503468010163:android:c482c674185fedc1",
+        "android_client_info": {
+          "package_name": "com.cookeat.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "503468010163-oiqojdbanrkegfqne6pmsemqf44rm566.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCneNUP7fAKpFOhzCsn4WL1dMcviXeSL_o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "503468010163-oiqojdbanrkegfqne6pmsemqf44rm566.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
