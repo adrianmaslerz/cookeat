@@ -1,3 +1,56 @@
-<ion-content>
-reminders
+<ion-header>
+    <ion-toolbar>
+        <ion-title>Reminders</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+    <ion-toolbar class="subtitle">
+        <ion-title color="primary">Reminders</ion-title>
+    </ion-toolbar>
+
+    <!--breakfast-->
+    <ion-list>
+        <ion-list-header>
+            <ion-label color="primary">Breakfast</ion-label>
+            <ion-item lines="none" tappable (click)="onAddReminderModal('breakfast')">
+                <ion-icon name="alarm" color="primary"></ion-icon>
+            </ion-item>
+        </ion-list-header>
+        <ion-item *ngFor="let reminder of breakfast">
+            <ion-label>{{ reminder.date | date : "HH:mm"}}</ion-label>
+            <span class="ingredients-preview">{{ prepareIngredients(reminder.ingredients).join(", ")}}</span>
+            <ion-icon name="remove-circle-outline" tappable (click)="onRemoveReminder(reminder)"></ion-icon>
+        </ion-item>
+    </ion-list>
+
+    <!--dinner-->
+    <ion-list>
+        <ion-list-header>
+            <ion-label color="primary">Dinner</ion-label>
+            <ion-item lines="none" tappable (click)="onAddReminderModal('dinner')">
+                <ion-icon name="alarm" color="primary"></ion-icon>
+            </ion-item>
+        </ion-list-header>
+        <ion-item *ngFor="let reminder of dinner">
+            <ion-label>{{ reminder.date | date : "HH:mm"}}</ion-label>
+            <span class="ingredients-preview">{{ prepareIngredients(reminder.ingredients).join(", ")}}</span>
+            <ion-icon name="remove-circle-outline" tappable (click)="onRemoveReminder(reminder)"></ion-icon>
+        </ion-item>
+    </ion-list>
+
+    <!--supper-->
+    <ion-list>
+        <ion-list-header>
+            <ion-label color="primary">Supper</ion-label>
+            <ion-item lines="none" tappable (click)="onAddReminderModal('supper')">
+                <ion-icon name="alarm" color="primary"></ion-icon>
+            </ion-item>
+        </ion-list-header>
+        <ion-item *ngFor="let reminder of supper">
+            <ion-label>{{ reminder.date | date : "HH:mm"}}</ion-label>
+            <span class="ingredients-preview">{{ prepareIngredients(reminder.ingredients).join(", ")}}</span>
+            <ion-icon name="remove-circle-outline" tappable (click)="onRemoveReminder(reminder)"></ion-icon>
+        </ion-item>
+    </ion-list>
 </ion-content>

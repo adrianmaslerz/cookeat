@@ -1,0 +1,53 @@
+<ion-header>
+    <ion-toolbar color="secondary">
+        <ion-title text-center>Add reminder</ion-title>
+        <ion-buttons slot="primary">
+            <ion-button (click)="onCancel()">
+                <ion-icon name="close"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+    <form>
+        <ion-item>
+            <ion-label>Choose time</ion-label>
+            <ion-datetime display-format="HH:mm" minuteValues="0,15,30,45" name="date" [(ngModel)]="date"></ion-datetime>
+        </ion-item>
+        <ion-item>
+            <ion-label position="fixed">Type</ion-label>
+            <ion-input readonly [value]="type"></ion-input>
+        </ion-item>
+
+        <div class="ingredients-container" *ngIf="ingredients.length">
+            <br>
+            <ion-label color="primary" margin-top>Ingredients</ion-label>
+            <ul>
+                <li *ngFor="let ingredient of ingredients">
+                    <ion-item lines="none" tappable (click)="onRemoveIngredient(ingredient)">
+                        <ion-label>{{ ingredient.title }}</ion-label>
+                        <ion-icon name="remove-circle-outline"></ion-icon>
+                    </ion-item>
+                </li>
+            </ul>
+        </div>
+
+        <br>
+        <ion-button color="primary" expand="full" (click)="onSubmit()">Submit</ion-button>
+    </form>
+
+    <br>
+
+    <!--ingredients search-->
+    <ion-searchbar  placeholder="Search ingredients" animated debounce="500" [(ngModel)]="search" (ionChange)="onSearch()"></ion-searchbar>
+    <div class="loading-container" text-center>
+        <ion-spinner *ngIf="inProgress"></ion-spinner>
+    </div>
+    <ion-list>
+        <ion-item *ngFor="let ingredient of results">
+            <ion-label>{{ ingredient.title }}</ion-label>
+            <ion-icon name="add" (click)="onAddIngredient(ingredient)"></ion-icon>
+        </ion-item>
+    </ion-list>
+</ion-content>
