@@ -6,6 +6,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 
 import { RemindersPage } from './reminders.page';
+import { ReminderModalPage } from './reminder-modal/reminder-modal.page';
 
 const routes: Routes = [
   {
@@ -21,6 +22,7 @@ const routes: Routes = [
     IonicModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [RemindersPage]
+  declarations: [RemindersPage, ReminderModalPage],
+  entryComponents: [ ReminderModalPage ]
 })
 export class RemindersPageModule {}
