@@ -28,6 +28,14 @@ export class AuthService
         return from(this.fireAuth.auth.signInWithEmailAndPassword(data["email"], data["password"]));
     }
 
+    updateProfie(data: Object)
+    {
+        if(data["email"] != this.logged.email)
+            this.fireAuth.auth.currentUser.updateEmail(data["email"])
+
+        return from(this.usersDataService.updateUser(this.logged.id, data));
+    }
+
     changePassword(password: string) : Observable<any>
     {
         return from(this.fireAuth.auth.currentUser.updatePassword(password));
