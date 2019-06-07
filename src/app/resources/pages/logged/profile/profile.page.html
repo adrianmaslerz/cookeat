@@ -1,9 +1,30 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>profile</ion-title>
-  </ion-toolbar>
+    <ion-toolbar>
+        <ion-title>Profile</ion-title>
+    </ion-toolbar>
 </ion-header>
 
-<ion-content>
-
+<ion-content padding>
+    <ion-toolbar class="subtitle">
+        <ion-title color="primary">Profile</ion-title>
+    </ion-toolbar>
+    <form [formGroup]="form" *ngIf="form">
+        <ion-item>
+            <ion-label position="floating" color="secondary">Email</ion-label>
+            <ion-input type="email" formControlName="email"></ion-input>
+        </ion-item>
+        <span class="input-error-message">{{ formUtils.handleValidationErrorMessage(form, 'email', messages) }} </span>
+        <ion-item>
+            <ion-label position="floating" color="secondary">First name</ion-label>
+            <ion-input type="text" formControlName="first_name"></ion-input>
+        </ion-item>
+        <span class="input-error-message">{{ formUtils.handleValidationErrorMessage(form, 'first_name', messages) }} </span>
+        <ion-item>
+            <ion-label position="floating" color="secondary">Last name</ion-label>
+            <ion-input type="text" formControlName="last_name"></ion-input>
+        </ion-item>
+        <span class="input-error-message">{{ formUtils.handleValidationErrorMessage(form, 'last_name', messages) }} </span>
+        <br>
+        <ion-button color="primary" expand="full" (click)="onSubmit()">Submit</ion-button>
+    </form>
 </ion-content>
