@@ -1,29 +1,39 @@
 <ion-header>
-    <ion-toolbar>
-        <ion-title>Register</ion-title>
+    <ion-toolbar color="primary" >
+        <ion-title>CookEat <img src="assets/logo.png"></ion-title>
     </ion-toolbar>
 </ion-header>
 
 
 <ion-content padding>
+    <ion-toolbar class="subtitle">
+        <ion-buttons>
+            <ion-back-button defaultHref="/login"></ion-back-button>
+        </ion-buttons>
+        <ion-title color="primary">Register</ion-title>
+    </ion-toolbar>
     <form [formGroup]="form">
         <ion-item>
             <ion-input placeholder="Email" type="email" autocomplete autocorrect formControlName="email"></ion-input>
         </ion-item>
+        <span class="input-error-message">{{ formUtils.handleValidationErrorMessage(form, 'email', messages) }} </span>
         <ion-item>
             <ion-input placeholder="Password" type="password" formControlName="password"></ion-input>
         </ion-item>
+        <span class="input-error-message">{{ formUtils.handleValidationErrorMessage(form, 'password', messages) }} </span>
         <ion-item>
             <ion-input placeholder="Repeat password" type="password" formControlName="password_repeat"></ion-input>
         </ion-item>
+        <span class="input-error-message">{{ formUtils.handleValidationErrorMessage(form, 'password_repeat', messages) }} </span>
         <ion-item>
             <ion-input placeholder="First name" autocomplete autocorrect formControlName="first_name"></ion-input>
         </ion-item>
+        <span class="input-error-message">{{ formUtils.handleValidationErrorMessage(form, 'first_name', messages) }} </span>
         <ion-item>
             <ion-input placeholder="Last name" autocomplete autocorrect formControlName="last_name"></ion-input>
         </ion-item>
-
+        <span class="input-error-message">{{ formUtils.handleValidationErrorMessage(form, 'last_name', messages) }} </span>
+        <br>
         <ion-button color="primary" expand="full" (click)="onSubmit()">Register</ion-button>
-        <ion-back-button defaultHref="/login" [text]="'To login'"></ion-back-button>
     </form>
 </ion-content>

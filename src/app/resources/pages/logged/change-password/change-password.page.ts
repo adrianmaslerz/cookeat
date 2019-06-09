@@ -24,7 +24,7 @@ export class ChangePasswordPage implements OnInit
                 },
                 {
                     error: 'minlength',
-                    message: 'Password must have 6 characters at least'
+                    message: 'Password must have 8 characters at least'
                 },
                 {
                     error: 'equalToFieldValue',
@@ -54,7 +54,7 @@ export class ChangePasswordPage implements OnInit
         this.form = new FormGroup({
             password: new FormControl(null, {
                 updateOn: 'blur',
-                validators: [ Validators.required, Validators.minLength(6)]
+                validators: [ Validators.required, Validators.minLength(8)]
             }),
             password_confirm: new FormControl(null, {
                 updateOn: 'blur',

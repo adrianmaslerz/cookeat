@@ -5,6 +5,7 @@ import { RemindersDataService } from '../../../../../services/data/reminders.dat
 import { IngredientsDataService } from '../../../../../services/data/ingredients.data.service';
 import { Ingredient } from '../../../../../models/ingredient.model';
 import { Reminder } from '../../../../../models/reminder.model';
+import { el } from '@angular/platform-browser/testing/src/browser_util';
 
 @Component({
     selector: 'app-reminder-modal',
@@ -49,7 +50,10 @@ export class ReminderModalPage implements OnInit
 
     onSearch()
     {
-        this.getData();
+        if(this.search)
+            this.getData();
+        else
+            this.results = [];
     }
     private getData() : void
     {

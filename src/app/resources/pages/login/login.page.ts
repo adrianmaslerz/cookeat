@@ -13,6 +13,7 @@ import { Platform } from '@ionic/angular';
 export class LoginPage implements OnInit
 {
     form: FormGroup;
+    message: string = "";
 
     constructor(private authService: AuthService, private router: Router, private googlePlus: GooglePlus, private platform: Platform) { }
 
@@ -40,10 +41,11 @@ export class LoginPage implements OnInit
         this.authService.login(this.form.value)
             .subscribe(response =>
             {
+                this.message = "";
                 this.router.navigate(["/logged","home"])
             }, (error =>
             {
-                console.log(error)
+                this.message = error.message
             }));
     }
 
