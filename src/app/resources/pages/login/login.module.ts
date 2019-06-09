@@ -6,6 +6,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 
 import { LoginPage } from './login.page';
+import { GooglePlus } from '@ionic-native/google-plus/ngx';
 
 const routes: Routes = [
     {
@@ -22,7 +23,8 @@ const routes: Routes = [
         RouterModule.forChild(routes),
         ReactiveFormsModule,
     ],
-    declarations: [ LoginPage ]
+    declarations: [ LoginPage ],
+    providers: [ GooglePlus ]
 })
 export class LoginPageModule
 {

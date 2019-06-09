@@ -3,6 +3,7 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { BehaviorSubject, from, Observable, Subject } from 'rxjs';
 import { UsersDataService } from '../data/users.data.service';
 import { User } from '../../models/user.model';
+import * as firebase from 'firebase/app';
 
 @Injectable({
     providedIn: 'root'
@@ -26,6 +27,18 @@ export class AuthService
     login(data: Object) : Observable<any>
     {
         return from(this.fireAuth.auth.signInWithEmailAndPassword(data["email"], data["password"]));
+    }
+
+    async loginGoogleWeb()
+    {
+        const provider = new firebase.auth.GoogleAuthProvider();
+        const credential = await this.fireAuth.auth.signInWithPopup(provider);
+        console.log(credential);
+    }
+
+    loginGoogleNative(googleUser) : Promise<any>
+    {
+        return this.fireAuth.auth.signInWithCredential(firebase.auth.GoogleAuthProvider.credential(googleUser.idToken))
     }
 
     updateProfie(data: Object)
