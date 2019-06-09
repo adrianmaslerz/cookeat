@@ -7,6 +7,9 @@ import {
     PushNotificationToken,
     PushNotificationActionPerformed
 } from '@capacitor/core';
+import { Favourite } from '../../../../models/favourite.model';
+import { Recipe } from '../../../../models/recipe.model';
+import { RecipesDataService } from '../../../../services/data/recipes.data.service';
 import { Platform } from '@ionic/angular';
 
 const { PushNotifications } = Plugins;
@@ -19,11 +22,19 @@ const { PushNotifications } = Plugins;
 })
 export class HomePage implements OnInit
 {
+    inProgress: boolean = false;
+    results: Array<Recipe> = [];
 
-    constructor(private platform: Platform) { }
+    constructor(private platform: Platform, private recipesDataService: RecipesDataService) { }
 
     ngOnInit()
     {
+        this.recipesDataService
+            .getRecipes("za")
+            .subscribe(snapshotList => {
+                this.results = snapshotList.map(snapshot => <Recipe>{ ...snapshot.payload.val(), key: snapshot.key } ).slice(8, 10);
+            })
+
         if(this.platform.is("android") || this.platform.is("ios"))
         {
             console.log('Initializing HomePage');

@@ -19,6 +19,15 @@ export class RecipesDataService
             .snapshotChanges();
     }
 
+    getAllRecipes() : Observable<any>
+    {
+        return this.fireDatabase
+            .list<Recipe>("recipes", ref => {
+                return ref.orderByChild("title").limitToFirst(30)
+            })
+            .snapshotChanges();
+    }
+
     getRecipeDetails(key: string) : Observable<any>
     {
         return this.fireDatabase.object(`recipes/${key}`).snapshotChanges();
