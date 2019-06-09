@@ -27,6 +27,17 @@
         </ion-card-header>
 
         <ion-card-content>
+            <div class="ingredients-container" *ngIf="ingredients.length">
+                <br>
+                <ion-label color="primary" margin-top>Ingredients</ion-label>
+                <ul>
+                    <li *ngFor="let ingredient of ingredients">
+                        <ion-item lines="none">
+                            <ion-label>{{ ingredient.title }}</ion-label>
+                        </ion-item>
+                    </li>
+                </ul>
+            </div>
             <div [innerHTML]="recipe.description" class="description"></div>
         </ion-card-content>
     </ion-card>

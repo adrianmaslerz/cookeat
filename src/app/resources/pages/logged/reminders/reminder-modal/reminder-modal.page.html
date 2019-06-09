@@ -40,7 +40,7 @@
     <br>
 
     <!--ingredients search-->
-    <ion-searchbar  placeholder="Search ingredients" animated debounce="500" [(ngModel)]="search" (ionChange)="onSearch()"></ion-searchbar>
+    <ion-searchbar  placeholder="Search" animated debounce="500" [(ngModel)]="search" (ionChange)="onSearch()"></ion-searchbar>
     <div class="loading-container" text-center>
         <ion-spinner *ngIf="inProgress"></ion-spinner>
     </div>
