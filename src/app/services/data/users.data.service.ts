@@ -28,10 +28,16 @@ export class UsersDataService
     updateUser(id: string, data: Object)
     {
         const ref = this.fireDatabase.object(`/users/${id}`);
-        return ref.set({
+        return ref.update({
             email: data["email"],
             first_name: data["first_name"],
             last_name: data["last_name"]
         });
+    }
+
+    addToken(id: string, token: string)
+    {
+        const ref = this.fireDatabase.list(`/users/${id}/tokens`);
+        return ref.push(token)
     }
 }
