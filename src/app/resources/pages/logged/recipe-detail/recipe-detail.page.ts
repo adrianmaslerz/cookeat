@@ -20,6 +20,7 @@ export class RecipeDetailPage implements OnInit
 {
     id: string;
     recipe: Recipe;
+    inProgress: boolean = false;
     allIngredients: Array<Ingredient> = [];
     ingredients: Array<Ingredient> = [];
     favourite: Favourite;
@@ -36,6 +37,7 @@ export class RecipeDetailPage implements OnInit
     {
         //getting data
         this.id = this.route.snapshot.params["id"];
+        this.inProgress = true;
         this.recipesDataService.getRecipeDetails(this.id)
             .pipe(
                 flatMap(snapshot => {
@@ -63,6 +65,8 @@ export class RecipeDetailPage implements OnInit
                     const recipeIngredient = <RecipeIngredient>{ ...snapshot.payload.val(), key: snapshot.key };
                     return this.allIngredients.find(ingredient => ingredient.id == recipeIngredient.ingredient_id);
                 })
+
+                this.inProgress = false;
             });
     }
 

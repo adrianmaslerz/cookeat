@@ -14,6 +14,7 @@ import { AngularFireModule } from 'angularfire2';;
 import { environment } from '../environments/environment';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
     declarations: [ AppComponent ],
@@ -26,7 +27,8 @@ import { AngularFireDatabaseModule } from '@angular/fire/database';
         AngularFireDatabaseModule,
         AppRoutingModule,
         FormsModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        HttpClientModule
     ],
     providers: [
         StatusBar,

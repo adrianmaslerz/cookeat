@@ -37,7 +37,7 @@ export class UsersDataService
 
     addToken(id: string, token: string)
     {
-        const ref = this.fireDatabase.list(`/users/${id}/tokens`);
-        return ref.push(token)
+        const ref = this.fireDatabase.object(`/users/${id}`);
+        return ref.update({token : token })
     }
 }

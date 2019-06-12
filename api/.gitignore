@@ -1,0 +1,6 @@
+/public/api/*
+/public/admin/*
+/public/uploads/
+/node_modules/
+/.idea/
+.env

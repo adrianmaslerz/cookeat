@@ -83,13 +83,18 @@ export class RemindersPage implements OnInit
     prepareIngredients(keys: Array<string>) : Array<string>
     {
         const ingredients : Array<Ingredient> = [];
-        keys.forEach(key => {
-            const ingredient = this.ingredients.find(ingredient => ingredient.key == key);
-            if(ingredient)
-                ingredients.push(ingredient);
-        })
+        if(keys)
+        {
+            keys.forEach(key => {
+                const ingredient = this.ingredients.find(ingredient => ingredient.key == key);
+                if(ingredient)
+                    ingredients.push(ingredient);
+            })
 
-        return ingredients.map(ingredient => ingredient.title);
+            return ingredients.map(ingredient => ingredient.title);
+        }
+        else
+            return [];
     }
 
 }

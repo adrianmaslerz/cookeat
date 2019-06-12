@@ -4,6 +4,7 @@
 
 export const environment = {
     production: false,
+    api: "https://api.cookeat.m-apps.pl",
     firebase: {
         apiKey: 'AIzaSyAwXcPxLPWjjGXHF5V0zveEep-kF1qYyJE',
         authDomain: 'cookeat-e828a.firebaseapp.com',

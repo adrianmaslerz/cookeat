@@ -4,13 +4,15 @@ import { Observable } from 'rxjs';
 import { Ingredient } from '../../models/ingredient.model';
 import { Favourite } from '../../models/favourite.model';
 import { RecipeIngredient } from '../../models/recipe-ingredient.model';
+import { HttpParams } from '@angular/common/http';
+import { ApiService } from '../core/api.service';
 
 @Injectable({
     providedIn: 'root'
 })
 export class IngredientsDataService
 {
-    constructor(private fireDatabase: AngularFireDatabase) { }
+    constructor(private fireDatabase: AngularFireDatabase, private apiService: ApiService) { }
 
     getIngredients(search?: string) : Observable<any>
     {
@@ -35,5 +37,11 @@ export class IngredientsDataService
                 return ref.orderByChild("recipe_id").equalTo(recipeId)
             })
             .snapshotChanges();
+    }
+
+    searchIngredients(search: string)
+    {
+        const params = new HttpParams().set("search", search);
+        return this.apiService.getData("ingredients", params);
     }
 }

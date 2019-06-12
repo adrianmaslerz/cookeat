@@ -9,9 +9,9 @@
 <ion-content>
     <br>
     <ion-toolbar>
-        <ion-title color="primary">Recipes for today</ion-title>
+        <ion-title color="primary" text-center>Recipes for today</ion-title>
     </ion-toolbar>
-    <div class="loading-container">
+    <div class="loading-container" text-center>
         <ion-spinner *ngIf="inProgress"></ion-spinner>
     </div>
     <ion-list>
@@ -23,5 +23,9 @@
             <ion-icon name="arrow-dropright"></ion-icon>
         </ion-item>
     </ion-list>
+
+    <div text-center>
+        <ion-label *ngIf="!inProgress && !results.length">No results</ion-label>
+    </div>
 </ion-content>
 

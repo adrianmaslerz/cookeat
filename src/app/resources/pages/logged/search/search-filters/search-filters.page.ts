@@ -36,11 +36,11 @@ export class SearchFiltersPage implements OnInit
     private getData() : void
     {
         this.inProgress = true;
-        this.ingredientsDataService.getIngredients(this.search)
-            .subscribe(snapshot => {
+        this.ingredientsDataService.searchIngredients(this.search)
+            .subscribe(data => {
 
                 this.inProgress = false;
-                this.results = snapshot.map(ingredient => { return { ...ingredient.payload.val(), key: ingredient.key } } );
+                this.results = data.results
             });
     }
 

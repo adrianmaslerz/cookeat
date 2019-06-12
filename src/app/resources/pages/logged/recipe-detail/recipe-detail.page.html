@@ -6,7 +6,12 @@
 
 <ion-content>
     <ion-back-button color="danger"></ion-back-button>
-    <ion-card *ngIf="recipe">
+    <div class="loading-container" *ngIf="inProgress" text-center>
+        <br>
+        <br>
+        <ion-spinner></ion-spinner>
+    </div>
+    <ion-card *ngIf="recipe && !inProgress">
         <ion-card-header>
             <ion-img [src]="recipe.image"></ion-img>
             <br>
@@ -28,13 +33,10 @@
 
         <ion-card-content>
             <div class="ingredients-container" *ngIf="ingredients.length">
-                <br>
                 <ion-label color="primary" margin-top>Ingredients</ion-label>
                 <ul>
                     <li *ngFor="let ingredient of ingredients">
-                        <ion-item lines="none">
-                            <ion-label>{{ ingredient.title }}</ion-label>
-                        </ion-item>
+                        {{ ingredient.title }}
                     </li>
                 </ul>
             </div>

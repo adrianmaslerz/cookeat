@@ -25,12 +25,13 @@ export class SearchPage implements OnInit
     private getData() : void
     {
         this.inProgress = true;
-        this.recipesDataService.getRecipes(this.search)
-            .subscribe(snapshot => {
+        this.recipesDataService
+            .searchRecipes(this.search, this.ingredients.map(ingredient => ingredient.key))
+            .subscribe(data => {
 
-            this.inProgress = false;
-            this.results = snapshot.map(recipe => { return { ...recipe.payload.val(), key: recipe.key } } );
-        });
+                this.inProgress = false;
+                this.results = data.results;
+            });
     }
 
     onSearch() : void

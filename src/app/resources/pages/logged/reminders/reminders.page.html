@@ -9,8 +9,12 @@
         <ion-title color="primary">Reminders</ion-title>
     </ion-toolbar>
 
+    <div class="loading-container" *ngIf="inProgress" text-center>
+        <ion-spinner></ion-spinner>
+    </div>
+
     <!--breakfast-->
-    <ion-list>
+    <ion-list *ngIf="!inProgress">
         <ion-list-header>
             <ion-label color="primary">Breakfast</ion-label>
             <ion-item lines="none" tappable (click)="onAddReminderModal('breakfast')">
@@ -22,10 +26,13 @@
             <span class="ingredients-preview">{{ prepareIngredients(reminder.ingredients).join(", ")}}</span>
             <ion-icon name="remove-circle-outline" tappable (click)="onRemoveReminder(reminder)"></ion-icon>
         </ion-item>
+        <div text-center>
+            <ion-label *ngIf="!inProgress && !breakfast.length">No reminders</ion-label>
+        </div>
     </ion-list>
 
     <!--dinner-->
-    <ion-list>
+    <ion-list *ngIf="!inProgress">
         <ion-list-header>
             <ion-label color="primary">Dinner</ion-label>
             <ion-item lines="none" tappable (click)="onAddReminderModal('dinner')">
@@ -37,10 +44,13 @@
             <span class="ingredients-preview">{{ prepareIngredients(reminder.ingredients).join(", ")}}</span>
             <ion-icon name="remove-circle-outline" tappable (click)="onRemoveReminder(reminder)"></ion-icon>
         </ion-item>
+        <div text-center>
+            <ion-label *ngIf="!inProgress && !dinner.length">No reminders</ion-label>
+        </div>
     </ion-list>
 
     <!--supper-->
-    <ion-list>
+    <ion-list *ngIf="!inProgress">
         <ion-list-header>
             <ion-label color="primary">Supper</ion-label>
             <ion-item lines="none" tappable (click)="onAddReminderModal('supper')">
@@ -52,5 +62,8 @@
             <span class="ingredients-preview">{{ prepareIngredients(reminder.ingredients).join(", ")}}</span>
             <ion-icon name="remove-circle-outline" tappable (click)="onRemoveReminder(reminder)"></ion-icon>
         </ion-item>
+        <div text-center>
+            <ion-label *ngIf="!inProgress && !supper.length">No reminders</ion-label>
+        </div>
     </ion-list>
 </ion-content>

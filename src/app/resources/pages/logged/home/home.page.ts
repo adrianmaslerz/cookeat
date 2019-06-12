@@ -7,12 +7,14 @@ import {
     PushNotificationToken,
     PushNotificationActionPerformed
 } from '@capacitor/core';
-import { Favourite } from '../../../../models/favourite.model';
 import { Recipe } from '../../../../models/recipe.model';
+import { Notfication } from '../../../../models/notfication.model';
 import { RecipesDataService } from '../../../../services/data/recipes.data.service';
 import { Platform } from '@ionic/angular';
 import { AuthService } from '../../../../services/core/auth.service';
 import { UsersDataService } from '../../../../services/data/users.data.service';
+import { flatMap } from 'rxjs/operators';
+import { NotificationsDataService } from '../../../../services/data/notifications.data.service';
 
 const { PushNotifications } = Plugins;
 
@@ -26,16 +28,24 @@ export class HomePage implements OnInit
 {
     inProgress: boolean = false;
     results: Array<Recipe> = [];
+    recipes: Array<Recipe> = [];
+    notifications: Array<Notfication> = [];
 
-    constructor(private platform: Platform, private recipesDataService: RecipesDataService, private authService: AuthService, private usersDataService: UsersDataService) { }
+    constructor(
+        private platform: Platform,
+        private recipesDataService: RecipesDataService,
+        private notificationsDataService: NotificationsDataService,
+        private authService: AuthService,
+        private usersDataService: UsersDataService
+    ) { }
 
     ngOnInit()
     {
-        this.recipesDataService
-            .getRecipes("za")
-            .subscribe(snapshotList => {
-                this.results = snapshotList.map(snapshot => <Recipe>{ ...snapshot.payload.val(), key: snapshot.key } ).slice(8, 10);
-            })
+        this.inProgress = true;
+        if(!this.authService.logged)
+            this.authService.user.subscribe(() => this.getData())
+        else
+            this.getData();
 
         if(this.platform.is("android") || this.platform.is("ios"))
         {
@@ -72,6 +82,22 @@ export class HomePage implements OnInit
             //     }
             // );
         }
+    }
+
+    getData()
+    {
+        this.notificationsDataService
+            .getUserNotifications(this.authService.logged.id)
+            .pipe(flatMap((snapshotList: Array<any>) => {
+                this.notifications = snapshotList.map(snapshot => <Notfication>{ ...snapshot.payload.val(), key: snapshot.key });
+                return this.recipesDataService.getRecipes();
+            }))
+            .subscribe(snapshotList => {
+
+                this.inProgress = false;
+                this.results = snapshotList.map(snapshot => <Recipe>{ ...snapshot.payload.val(), key: snapshot.key } )
+                   .filter((recipe: Recipe) => this.notifications.map(notification => notification.recipe_id).includes(recipe.key));
+            });
     }
 
 }

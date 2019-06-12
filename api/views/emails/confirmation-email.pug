@@ -1,0 +1,6 @@
+h3 Hello #{user.first_name}!
+p Thank you for registration on Base API. To complete registration process, please confirm your email by clicking link below.
+
+br
+a(href="#{variables.app.domain}#{variables.paths.emails.EMAIL_VERIFICATION}?token=#{emailConfirmation.token}") Confirm email
+include _footer
