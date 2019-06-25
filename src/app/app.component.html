@@ -8,18 +8,6 @@
         <ion-content>
             <ion-list>
                 <ion-menu-toggle>
-                    <ion-item lines="none" routerLink="/logged/profile" routerLinkActive="active">
-                        <ion-icon name="person" slot="start"></ion-icon>
-                        <ion-label>Profile</ion-label>
-                    </ion-item>
-                </ion-menu-toggle>
-                <ion-menu-toggle>
-                    <ion-item lines="none" routerLink="/logged/change-password" routerLinkActive="active">
-                        <ion-icon name="lock" slot="start"></ion-icon>
-                        <ion-label>Change password</ion-label>
-                    </ion-item>
-                </ion-menu-toggle>
-                <ion-menu-toggle>
                     <ion-item lines="none" (click)="onLogout()">
                         <ion-icon name="log-out" slot="start"></ion-icon>
                         <ion-label>Logout</ion-label>

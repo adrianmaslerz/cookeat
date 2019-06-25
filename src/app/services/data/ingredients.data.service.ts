@@ -2,8 +2,6 @@ import { Injectable } from '@angular/core';
 import { AngularFireDatabase } from '@angular/fire/database';
 import { Observable } from 'rxjs';
 import { Ingredient } from '../../models/ingredient.model';
-import { Favourite } from '../../models/favourite.model';
-import { RecipeIngredient } from '../../models/recipe-ingredient.model';
 import { HttpParams } from '@angular/common/http';
 import { ApiService } from '../core/api.service';
 

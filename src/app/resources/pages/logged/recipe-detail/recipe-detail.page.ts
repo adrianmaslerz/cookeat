@@ -2,11 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { RecipesDataService } from '../../../../services/data/recipes.data.service';
 import { Recipe } from '../../../../models/recipe.model';
-import { FavouritesDataService } from '../../../../services/data/favourites.data.service';
-import { AuthService } from '../../../../services/core/auth.service';
-import { User } from '../../../../models/user.model';
+
 import { flatMap } from 'rxjs/operators';
-import { Favourite } from '../../../../models/favourite.model';
+
 import { RecipeIngredient } from '../../../../models/recipe-ingredient.model';
 import { Ingredient } from '../../../../models/ingredient.model';
 import { IngredientsDataService } from '../../../../services/data/ingredients.data.service';
@@ -23,14 +21,11 @@ export class RecipeDetailPage implements OnInit
     inProgress: boolean = false;
     allIngredients: Array<Ingredient> = [];
     ingredients: Array<Ingredient> = [];
-    favourite: Favourite;
 
     constructor(
         private route: ActivatedRoute,
         private recipesDataService: RecipesDataService,
-        private ingredientsDataService: IngredientsDataService,
-        private favouritesDataService: FavouritesDataService,
-        private authService: AuthService
+        private ingredientsDataService: IngredientsDataService
     ) { }
 
     ngOnInit()
@@ -42,13 +37,6 @@ export class RecipeDetailPage implements OnInit
             .pipe(
                 flatMap(snapshot => {
                     this.recipe = { ...snapshot.payload.val(), key: snapshot.key };
-                    return this.favouritesDataService.getUserFavourites(this.authService.logged.id);
-                }),
-                flatMap(snapshotList => {
-                    this.favourite = snapshotList.find(snapshot => {
-                        const favourite = <Favourite>{ ...snapshot.payload.val(), key: snapshot.key };
-                        return favourite.recipe_id == this.id;
-                    });
                     return this.ingredientsDataService.getAllIngredients();
                 }),
                 flatMap(snapshotList => {
@@ -69,13 +57,4 @@ export class RecipeDetailPage implements OnInit
                 this.inProgress = false;
             });
     }
-
-    onFavourite()
-    {
-        if(this.favourite)
-            this.favouritesDataService.removeFavourite(this.favourite.key);
-        else
-            this.favouritesDataService.addFavourite(this.authService.logged.id, this.id);
-    }
-
 }

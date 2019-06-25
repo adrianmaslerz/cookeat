@@ -27,38 +27,11 @@ const routes: Routes = [
                 ]
             },
             {
-                path: 'favourites',
-                children: [
-                    {
-                        path: '',
-                        loadChildren: './favourites/favourites.module#FavouritesPageModule'
-                    }
-                ]
-            },
-            {
                 path: 'reminders',
                 children: [
                     {
                         path: '',
                         loadChildren: './reminders/reminders.module#RemindersPageModule'
-                    }
-                ]
-            },
-            {
-                path: 'profile',
-                children: [
-                    {
-                        path: '',
-                        loadChildren: './profile/profile.module#ProfilePageModule'
-                    }
-                ]
-            },
-            {
-                path: 'change-password',
-                children: [
-                    {
-                        path: '',
-                        loadChildren: './change-password/change-password.module#ChangePasswordPageModule'
                     }
                 ]
             },
@@ -71,7 +44,6 @@ const routes: Routes = [
                     }
                 ]
             },
-
             {
                 path: '',
                 redirectTo: '/logged/home',
