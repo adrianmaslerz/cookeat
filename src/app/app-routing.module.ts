@@ -8,6 +8,7 @@ const routes: Routes = [
     { path: 'login', loadChildren: './resources/pages/login/login.module#LoginPageModule', canLoad: [ NoAuthGuard ] },
     { path: 'register', loadChildren: './resources/pages/register/register.module#RegisterPageModule', canLoad: [ NoAuthGuard ] },
     { path: 'logged', loadChildren: './resources/pages/logged/logged.module#LoggedPageModule', canLoad: [ AuthGuard ] },
+    { path: 'changepassword', loadChildren: './resources/pages/changepassword/changepassword.module#ChangePasswordModule', canLoad: [ AuthGuard ] },
 ];
 
 @NgModule({

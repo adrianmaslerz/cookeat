@@ -37,4 +37,8 @@ export class AppComponent implements OnInit
     {
         this.fireAuth.auth.signOut();
     }
+    onChangePasswd()
+{
+    console.log("elo");
+}
 }
