@@ -27,11 +27,29 @@ const routes: Routes = [
                 ]
             },
             {
+                path: 'favourites',
+                children: [
+                    {
+                        path: '',
+                        loadChildren: './favourites/favourites.module#FavouritesPageModule'
+                    }
+                ]
+            },
+            {
                 path: 'reminders',
                 children: [
                     {
                         path: '',
                         loadChildren: './reminders/reminders.module#RemindersPageModule'
+                    }
+                ]
+            },
+            {
+                path: 'profile',
+                children: [
+                    {
+                        path: '',
+                        loadChildren: './profile/profile.module#ProfilePageModule'
                     }
                 ]
             },
