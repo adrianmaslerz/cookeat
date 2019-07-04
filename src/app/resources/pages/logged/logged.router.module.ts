@@ -36,6 +36,15 @@ const routes: Routes = [
                 ]
             },
             {
+                path: 'change-password',
+                children: [
+                    {
+                        path: '',
+                        loadChildren: './change-password/change-password.module#ChangePasswordPageModule'
+                    }
+                ]
+            },
+            {
                 path: 'recipes/:id',
                 children: [
                     {
