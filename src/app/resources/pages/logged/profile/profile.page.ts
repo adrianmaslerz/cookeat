@@ -51,7 +51,11 @@ export class ProfilePage implements OnInit
         },
     ];
 
-    constructor(private authService: AuthService, private usersDataService: UsersDataService, private toastController: ToastController) { }
+    constructor(
+        private authService: AuthService,
+        private usersDataService: UsersDataService,
+        private toastController: ToastController
+    ) { }
 
     ngOnInit()
     {
